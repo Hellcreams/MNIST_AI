@@ -46,12 +46,11 @@ error_list = []
 
 for i in range(epoch):
     # 입력층에서 은닉층으로의 순전파
-    hidden_layer = np.maximum(0, np.dot(X, W1) + b1 + bias)
+    hidden_layer = np.maximum(0, np.dot(X, W1) + b1)
 
     # 은닉층에서 출력층으로의 순전파
-    output_layer = np.exp(np.dot(hidden_layer, W2) + b2 + bias)
+    output_layer = np.exp(np.dot(hidden_layer, W2) + b2)
     output_probs = output_layer / np.sum(output_layer, axis=1, keepdims=True)
-
 
     # 실제값을 one-hot 인코딩으로 변환
     y_one_hot = np.eye(output_dim)[y_train]
